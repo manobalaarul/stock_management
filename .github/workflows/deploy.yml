@@ -31,4 +31,3 @@ jobs:
           protocol: ${{ secrets.FTP_PROTOCOL }}
           local-dir: ./dist/
           remote-dir: public_html/stockmanagement/
-          dangerous-clean-slate: true
