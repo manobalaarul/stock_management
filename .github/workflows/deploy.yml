@@ -3,33 +3,29 @@ name: Deploy to cPanel
 on:
   push:
     branches:
-      - main # Trigger the action on push to main branch. Change if needed.
+      - main  # Trigger on push to main branch.
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2  # Checkout the code
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "22" # Specify the Node version, or use the version you need.
+    - name: Install Node.js dependencies
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Set Node.js version
 
-      - name: Install dependencies
-        run: npm install
+    - name: Build the project
+      run: npm run build  # Build the project
 
-      - name: Build the project
-        run: npm run build # Adjust this if you're using a different build command.
-
-      - name: Upload dist/ folder to cPanel via FTP
-        uses: sebastianpopp/ftp-deploy-action@v2
-        with:
-          ftp-server: ftp.thilagasrecipe.in # Replace with your cPanel FTP server URL
-          ftp-username: ${{ secrets.FTP_USERNAME }} # Store FTP username in GitHub Secrets
-          ftp-password: ${{ secrets.FTP_PASSWORD }} # Store FTP password in GitHub Secrets
-          local-dir: ./dist # The folder to upload
-          remote-dir: /public_html/stockmanagement/ # Destination folder on your cPanel
-
+    - name: Deploy to FTP server
+      uses: ronilaukkarinen/ftp-deploy-action@v1  # Another FTP action
+      with:
+        host: ${{ secrets.FTP_HOST }}  # FTP host (server)
+        username: ${{ secrets.FTP_USERNAME }}  # FTP username (stored in GitHub Secrets)
+        password: ${{ secrets.FTP_PASSWORD }}  # FTP password (stored in GitHub Secrets)
+        local-dir: './dist'  # Path to the build folder
+        remote-dir: '/public_html'  # Remote folder on your cPanel
