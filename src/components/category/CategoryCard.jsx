@@ -58,7 +58,13 @@ const CategoryCard = ({
           Delete
         </button>
       </div>
-     
+      {openConfirmDeleteBox && (
+        <ConfirmBox
+          cancel={() => setOpenDeleteConfirmBox(false)}
+          close={() => setOpenDeleteConfirmBox(false)}
+          confirm={handleDeleteCategory}
+        />
+      )}
     </div>
   );
 };
