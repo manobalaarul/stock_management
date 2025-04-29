@@ -27,7 +27,7 @@ jobs:
       - name: Upload dist/ folder to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4
         with:
-          ftp-server: ftp://your-cpanel-domain.com # Replace with your cPanel FTP server URL
+          ftp-server: ftp.thilagasrecipe.in # Replace with your cPanel FTP server URL
           ftp-username: ${{ secrets.FTP_USERNAME }} # Store FTP username in GitHub Secrets
           ftp-password: ${{ secrets.FTP_PASSWORD }} # Store FTP password in GitHub Secrets
           local-dir: ./dist # The folder to upload
