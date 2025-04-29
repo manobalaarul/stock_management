@@ -60,8 +60,8 @@ const CategoryCard = ({
       </div>
       {openConfirmDeleteBox && (
         <ConfirmBox
-          cancel={() => setOpenDeleteConfirmBox(false)}
-          close={() => setOpenDeleteConfirmBox(false)}
+          cancel={() => setOpenConfirmDeleteBox(false)}
+          close={() => setOpenConfirmDeleteBox(false)}
           confirm={handleDeleteCategory}
         />
       )}
