@@ -23,105 +23,111 @@ import InvoicePage from "../pages/InvoicePage";
 import InvoicePagePrint from "../pages/InvoicePagePrint";
 import Profile from "../pages/Profile";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      children: [
+        {
+          path: "",
+          element: <DashboardLayout />,
+          children: [
+            {
+              path: "",
+              element: <Home />,
+            },
+            {
+              path: "category",
+              element: <Category />,
+            },
+            {
+              path: "sub_category",
+              element: <SubCategory />,
+            },
+            {
+              path: "add_products",
+              element: <AddProduct />,
+            },
+            {
+              path: "edit_product",
+              element: <EditProduct />,
+            },
+            {
+              path: "products",
+              element: <Products />,
+            },
+            {
+              path: "stock_details",
+              element: <StockDetails />,
+            },
+            {
+              path: "instock_details",
+              element: <InStockDetails />,
+            },
+            {
+              path: "outstock_details",
+              element: <OutStockDetails />,
+            },
+            {
+              path: "sales",
+              element: <Sales />,
+            },
+            {
+              path: "order_details",
+              element: <OrderDetails />,
+            },
+            {
+              path: "invoice",
+              element: <InvoicePage />,
+            },
+            {
+              path: "invoice_print",
+              element: <InvoicePagePrint />,
+            },
+            {
+              path: "profile",
+              element: <Profile />,
+            },
+          ],
+        },
+        {
+          path: "/auth",
+          element: <AuthLayout />,
+          children: [
+            {
+              path: "login",
+              element: <Login />,
+            },
+            {
+              path: "register",
+              element: <Register />,
+            },
+            {
+              path: "forgot_password",
+              element: <ForgotPassword />,
+            },
+            {
+              path: "verify_email",
+              element: <VerifyEmail />,
+            },
+            {
+              path: "verify_reset_password",
+              element: <VerifyResetPassword />,
+            },
+            {
+              path: "reset_password",
+              element: <ResetPassword />,
+            },
+          ],
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "",
-        element: <DashboardLayout />,
-        children: [
-          {
-            path: "",
-            element: <Home />,
-          },
-          {
-            path: "category",
-            element: <Category />,
-          },
-          {
-            path: "sub_category",
-            element: <SubCategory />,
-          },
-          {
-            path: "add_products",
-            element: <AddProduct />,
-          },
-          {
-            path: "edit_product",
-            element: <EditProduct />,
-          },
-          {
-            path: "products",
-            element: <Products />,
-          },
-          {
-            path: "stock_details",
-            element: <StockDetails />,
-          },
-          {
-            path: "instock_details",
-            element: <InStockDetails />,
-          },
-          {
-            path: "outstock_details",
-            element: <OutStockDetails />,
-          },
-          {
-            path: "sales",
-            element: <Sales />,
-          },
-          {
-            path: "order_details",
-            element: <OrderDetails />,
-          },
-          {
-            path: "invoice",
-            element: <InvoicePage />,
-          },
-          {
-            path: "invoice_print",
-            element: <InvoicePagePrint />,
-          },
-          {
-            path: "profile",
-            element: <Profile />,
-          },
-        ],
-      },
-      {
-        path: "/auth",
-        element: <AuthLayout />,
-        children: [
-          {
-            path: "login",
-            element: <Login />,
-          },
-          {
-            path: "register",
-            element: <Register />,
-          },
-          {
-            path: "forgot_password",
-            element: <ForgotPassword />,
-          },
-          {
-            path: "verify_email",
-            element: <VerifyEmail />,
-          },
-          {
-            path: "verify_reset_password",
-            element: <VerifyResetPassword />,
-          },
-          {
-            path: "reset_password",
-            element: <ResetPassword />,
-          },
-        ],
-      },
-    ],
-  },
-]);
+    // 🔥 Add this line to fix subpath issue
+    basename: "/stockmanagement",
+  }
+);
 
 export default router;
