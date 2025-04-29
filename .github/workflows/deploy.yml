@@ -1,31 +1,33 @@
-name: Deploy to cPanel
-
 on:
   push:
     branches:
-      - main  # Trigger on push to main branch.
+      - main
+name: 🚀 Deploy website on push
 
 jobs:
-  deploy:
+  web-deploy:
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2  # Checkout the code
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
 
-    - name: Install Node.js dependencies
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'  # Set Node.js version
+      - name: Use Node.js 21.1.0
+        uses: actions/setup-node@v2
+        with:
+          node-version: "21.1.0"
 
-    - name: Build the project
-      run: npm run build  # Build the project
+      - name: 🔨 Build Project
+        run: |
+          npm install
+          npm run build
 
-    - name: Deploy to FTP server
-      uses: ronilaukkarinen/ftp-deploy-action@v1  # Another FTP action
-      with:
-        host: ${{ secrets.FTP_HOST }}  # FTP host (server)
-        username: ${{ secrets.FTP_USERNAME }}  # FTP username (stored in GitHub Secrets)
-        password: ${{ secrets.FTP_PASSWORD }}  # FTP password (stored in GitHub Secrets)
-        local-dir: './dist'  # Path to the build folder
-        remote-dir: '/public_html'  # Remote folder on your cPanel
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ${{ secrets.FTP_PROTOCOL }}
+          local-dir: ./dist/
+          remote-dir: react/crud
