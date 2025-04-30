@@ -35,4 +35,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ${{ secrets.FTP_PROTOCOL }} # usually 'ftp' or 'ftps'
           local-dir: ./dist/ # or ./build/ depending on framework
-          server-dir: public_html/ # ✅ deploys to /public_html/
+          server-dir: public_html/stockmanagement/ # ✅ deploys to /public_html/
