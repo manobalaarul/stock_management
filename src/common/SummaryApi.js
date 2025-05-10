@@ -165,6 +165,10 @@ const SummaryApi = {
     url: "/api/profile/update_profile",
     method: "put",
   },
+  todays_report: {
+    url: "/api/dashboard/todays_report",
+    method: "get",
+  },
 };
 
 export default SummaryApi;
