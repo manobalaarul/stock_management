@@ -26,7 +26,7 @@ import Profile from "../pages/Profile";
 const router = createBrowserRouter(
   [
     {
-      path: "/",
+      path: "",
       element: <App />,
       children: [
         {
@@ -34,6 +34,7 @@ const router = createBrowserRouter(
           element: <DashboardLayout />,
           children: [
             {
+              index: true,
               path: "index",
               element: <Home />,
             },
