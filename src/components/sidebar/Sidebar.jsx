@@ -47,7 +47,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <ul className="space-y-2">
           <li>
             <Link
-              to={"/index"}
+              to={"/"}
               onClick={toggleSidebar}
               className={`p-2 rounded flex items-center gap-3 ${
                 location.pathname === "/"
