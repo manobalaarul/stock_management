@@ -127,7 +127,7 @@ const Home = () => {
               <FaIndianRupeeSign className="w-8 h-8 text-primary-blue" />
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-gray-600">Earnings</h2>
+              <h2 className="text-lg font-semibold text-gray-600">Revenue</h2>
               <p className="text-xl font-bold text-gray-900">
                 {data.totalSales}
               </p>
