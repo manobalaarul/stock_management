@@ -34,7 +34,7 @@ const Category = () => {
         <div className="flex items-center justify-between">
           <div>
             <h2 className="font-semibold text-lg">Categories</h2>
-            <p className="text-sm">All Categories </p>
+            <p className="text-sm">All Categories</p>
           </div>
           <div className="flex items-center gap-4">
             <button className="bg-gray-200 rounded py-2 px-2 text-black">
